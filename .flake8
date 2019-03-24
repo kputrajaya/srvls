@@ -1,5 +1,5 @@
 [flake8]
-exclude = .git, migrations, node_modules, src
+exclude = .git, migrations, node_modules
 max-line-length = 119
 import-order-style = google
 application-import-names = master

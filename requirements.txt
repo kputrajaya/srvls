@@ -9,4 +9,4 @@ s3transfer==0.2.0
 six==1.12.0
 urllib3==1.24.1
 Werkzeug==0.15.1
--e git://github.com/kiloev/zappa-django-utils.git@72cbea7261813b449db906f84bf83b08702aa90c#egg=zappa-django-utils
+zappa-django-utils==0.40.0
