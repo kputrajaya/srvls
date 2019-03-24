@@ -58,10 +58,24 @@ resources:
             - Id: ${self:custom.var.projectName}
               DomainName: ${self:custom.customDomain.domainName}
               CustomOriginConfig:
-                HTTPPort: 80
-                HTTPSPort: 443
                 OriginProtocolPolicy: https-only
           PriceClass: PriceClass_200
           ViewerCertificate:
             AcmCertificateArn: ${self:custom.var.certificateArn}
+            MinimumProtocolVersion: TLSv1.1_2016
             SslSupportMethod: sni-only
+    Route53RecordSet:
+      Type: AWS::Route53::RecordSetGroup
+      Properties:
+        HostedZoneName: ${self:custom.var.hostName}
+        RecordSets:
+        - Name: cdn-${self:custom.var.projectName}.${self:custom.var.hostName}
+          Type: A
+          AliasTarget:
+            HostedZoneId: Z2FDTNDATAQYW2
+            DNSName: !GetAtt [CloudFrontDistribution, DomainName]
+        - Name: cdn-${self:custom.var.projectName}.${self:custom.var.hostName}
+          Type: AAAA
+          AliasTarget:
+            HostedZoneId: Z2FDTNDATAQYW2
+            DNSName: !GetAtt [CloudFrontDistribution, DomainName]
