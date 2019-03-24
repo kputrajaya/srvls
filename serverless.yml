@@ -22,12 +22,15 @@ functions:
       - http: 'ANY {proxy+}'
 
 plugins:
+  - serverless-domain-manager
   - serverless-python-requirements
   - serverless-wsgi
 
 custom:
+  customDomain:
+    domainName: srvls.kputrajaya.com
+  pythonRequirements:
+    dockerizePip: non-linux
   wsgi:
     app: srvls.wsgi.application
     packRequirements: false
-  pythonRequirements:
-    dockerizePip: non-linux
