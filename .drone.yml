@@ -6,11 +6,11 @@ steps:
   image: python:3.7-alpine
   volumes:
   - name: pip
-    path: /drone/src/site-packages
+    path: /drone/src/.pip
   commands:
-  - pip install -t /drone/src/site-packages flake8
+  - pip install --cache-dir=.pip flake8
   - flake8
-  - pip install -t /drone/src/site-packages -r requirements.txt
+  - pip install --cache-dir=.pip -r requirements.txt
   - python manage.py test apps
 - name: publish
   image: python:3.7-alpine
