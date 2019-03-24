@@ -65,3 +65,4 @@ resources:
           PriceClass: PriceClass_200
           ViewerCertificate:
             AcmCertificateArn: ${self:custom.var.certificateArn}
+            SslSupportMethod: sni-only
