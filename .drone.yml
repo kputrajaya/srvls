@@ -10,6 +10,7 @@ steps:
   commands:
   - pip install --cache-dir=.pip flake8
   - flake8
+  - apk add --update git
   - pip install --cache-dir=.pip -r requirements.txt
   - python manage.py test apps
 - name: publish

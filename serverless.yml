@@ -8,22 +8,22 @@ provider:
   timeout: 10
   versionFunctions: false
   iamRoleStatements:
-  - Effect: "Allow"
-    Action:
-    - s3:GetObject
-    - s3:PutObject
-    Resource: "arn:aws:s3:::*"
+    - Effect: "Allow"
+        Action:
+          - s3:GetObject
+          - s3:PutObject
+        Resource: "arn:aws:s3:::*"
 
 functions:
   app:
     handler: wsgi_handler.handler
     events:
-    - http: ANY /
-    - http: 'ANY {proxy+}'
+      - http: ANY /
+      - http: 'ANY {proxy+}'
 
 plugins:
-- serverless-python-requirements
-- serverless-wsgi
+  - serverless-python-requirements
+  - serverless-wsgi
 
 custom:
   wsgi:
