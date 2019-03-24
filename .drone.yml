@@ -6,7 +6,7 @@ steps:
   image: python:3.7-alpine
   volumes:
   - name: pip
-    path: /drone/src/node_modules
+    path: /usr/local/lib/python3.7/site-packages
   commands:
   - pip install flake8
   - pip show flake8
