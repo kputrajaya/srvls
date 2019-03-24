@@ -57,7 +57,6 @@ resources:
           Origins:
             - Id: ${self:custom.var.projectName}
               DomainName: ${self:custom.customDomain.domainName}
-              OriginPath: /
               CustomOriginConfig:
                 HTTPPort: 80
                 HTTPSPort: 443
