@@ -10,7 +10,6 @@ steps:
       AWS_SECRET_ACCESS_KEY:
         from_secret: AWS_SECRET_ACCESS_KEY
       SLS_DEBUG: "*"
-      SLS_FUNCTION_NAME: "app"
     volumes:
       - name: npm
         path: /drone/src/node_modules
@@ -23,7 +22,7 @@ steps:
       - python manage.py collectstatic
       - apk add --update nodejs-npm
       - npm install
-      - $(npm bin)/serverless deploy function -f $SLS_FUNCTION_NAME
+      - $(npm bin)/serverless deploy
 
 volumes:
   - name: npm
