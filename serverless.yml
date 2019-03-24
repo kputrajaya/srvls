@@ -1,0 +1,27 @@
+service: srvls
+
+provider:
+  name: aws
+  runtime: python3.7
+  region: ap-southeast-1
+  memorySize: 128
+  timeout: 10
+  versionFunctions: false
+
+functions:
+  app:
+    handler: wsgi.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+
+plugins:
+  - serverless-python-requirements
+  - serverless-wsgi
+
+custom:
+  wsgi:
+    app: srvls.wsgi.application
+    packRequirements: false
+  pythonRequirements:
+    dockerizePip: non-linux
