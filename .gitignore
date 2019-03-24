@@ -1,4 +1,7 @@
 .serverless/
 __pycache__/
+media/
 node_modules/
+static/
 *.sqlite3
+local_settings.py
