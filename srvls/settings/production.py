@@ -9,3 +9,5 @@ DATABASES = {
         'BUCKET': 'srvls-db'
     }
 }
+
+STATIC_URL = 'https://cdn-srvls.kputrajaya.com/static/'

@@ -1,4 +1,4 @@
-service: srvls
+service: ${self:custom.var.projectName}
 
 provider:
   name: aws
@@ -27,10 +27,41 @@ plugins:
   - serverless-wsgi
 
 custom:
+  var:
+    projectName: srvls
+    hostName: kputrajaya.com
+    certificateArn: arn:aws:acm:us-east-1:930835441098:certificate/e90c4c50-a9ff-445f-ace8-dc4ab1285c84
   customDomain:
-    domainName: srvls.kputrajaya.com
+    domainName: ${self:custom.var.projectName}.${self:custom.var.hostName}
   pythonRequirements:
     dockerizePip: non-linux
   wsgi:
-    app: srvls.wsgi.application
+    app: ${self:custom.var.projectName}.wsgi.application
     packRequirements: false
+
+resources:
+  Resources:
+    CloudFrontDistribution:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          Aliases:
+            - cdn-${self:custom.var.projectName}.${self:custom.var.hostName}
+          DefaultCacheBehavior:
+            TargetOriginId: ${self:custom.var.projectName}
+            ViewerProtocolPolicy: 'redirect-to-https'
+            DefaultTTL: 2592000
+            ForwardedValues:
+              QueryString: false
+          Enabled: true
+          Origins:
+            - Id: ${self:custom.var.projectName}
+              DomainName: ${self:custom.var.customDomain.domainName}
+              OriginPath: /
+              CustomOriginConfig:
+                HTTPPort: 80
+                HTTPSPort: 443
+                OriginProtocolPolicy: https-only
+          PriceClass: PriceClass_200
+          ViewerCertificate:
+            AcmCertificateArn: ${self:custom.var.certificateArn}
