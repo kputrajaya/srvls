@@ -2,42 +2,38 @@ kind: pipeline
 name: default
 
 steps:
-- name: test
-  image: python:3.7-alpine
-  volumes:
-  - name: pip
-    path: /drone/src/.pip
-  commands:
-  - pip install --cache-dir=.pip flake8
-  - flake8
-  - apk add --update git
-  - pip install --cache-dir=.pip -r requirements.txt
-  - python manage.py test apps
-- name: publish
-  image: python:3.7-alpine
-  environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: AWS_ACCESS_KEY_ID
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: AWS_SECRET_ACCESS_KEY
-  volumes:
-  - name: npm
-    path: /drone/src/node_modules
-  commands:
-  - apk add --update nodejs-npm
-  - npm install
-  - $(npm bin)/serverless deploy
+  - name: test
+    image: python:3.7-alpine
+    environment:
+      AWS_ACCESS_KEY_ID:
+        from_secret: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY:
+        from_secret: AWS_SECRET_ACCESS_KEY
+    volumes:
+      - name: npm
+        path: /drone/src/node_modules
+      - name: pip
+        path: /drone/src/.pip
+    commands:
+      - pip install --cache-dir=.pip flake8
+      - flake8
+      - apk add --update git
+      - pip install --cache-dir=.pip -r requirements.txt
+      - python manage.py test apps
+      - apk add --update nodejs-npm
+      - npm install
+      - $(npm bin)/serverless deploy
 
 volumes:
-- name: npm
-  host:
-    path: /drone/npm
-- name: pip
-  host:
-    path: /drone/pip
+  - name: npm
+    host:
+      path: /drone/npm
+  - name: pip
+    host:
+      path: /drone/pip
 
 when:
   event:
-  - push
+    - push
   branch:
-  - master
+    - master
