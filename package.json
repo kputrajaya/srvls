@@ -1,10 +1,10 @@
 {
-  "name": "django-serverless",
+  "name": "srvls",
   "version": "1.0.0",
   "description": "Base for Django projects running in serverless environment.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kiloev/django-serverless.git"
+    "url": "git+https://github.com/kiloev/srvls.git"
   },
   "author": "Kevin Putrajaya",
   "devDependencies": {
