@@ -5,7 +5,7 @@ DEBUG = False
 DATABASES = {
     'default': {
         'ENGINE': 'zappa_django_utils.db.backends.s3sqlite',
-        'NAME': 'sqlite.db',
+        'NAME': 'db.sqlite3',
         'BUCKET': 'srvls-db'
     }
 }
