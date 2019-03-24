@@ -30,7 +30,6 @@ custom:
   var:
     projectName: srvls
     hostName: kputrajaya.com
-    certificateArn: arn:aws:acm:us-east-1:930835441098:certificate/e90c4c50-a9ff-445f-ace8-dc4ab1285c84
   customDomain:
     domainName: ${self:custom.var.projectName}.${self:custom.var.hostName}
   pythonRequirements:
@@ -61,7 +60,7 @@ resources:
                 OriginProtocolPolicy: https-only
           PriceClass: PriceClass_200
           ViewerCertificate:
-            AcmCertificateArn: ${self:custom.var.certificateArn}
+            AcmCertificateArn: ${env:CERTIFICATE_ARN}
             MinimumProtocolVersion: TLSv1.1_2016
             SslSupportMethod: sni-only
     Route53RecordSet:
