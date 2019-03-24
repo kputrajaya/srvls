@@ -2,6 +2,13 @@ kind: pipeline
 name: default
 
 steps:
+- name: test
+  image: python:3.7-alpine
+  commands:
+  - pip install flake8
+  - flake8
+  - pip install -r requirements.txt
+  - python manage.py test apps
 - name: publish
   image: python:3.7-alpine
   environment:
