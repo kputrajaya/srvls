@@ -66,7 +66,7 @@ resources:
     Route53RecordSet:
       Type: AWS::Route53::RecordSetGroup
       Properties:
-        HostedZoneName: ${self:custom.var.hostName}
+        HostedZoneName: ${self:custom.var.hostName}.
         RecordSets:
         - Name: cdn-${self:custom.var.projectName}.${self:custom.var.hostName}
           Type: A
