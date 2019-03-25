@@ -58,7 +58,7 @@ resources:
               DomainName: ${self:custom.customDomain.domainName}
               CustomOriginConfig:
                 OriginProtocolPolicy: https-only
-          PriceClass: PriceClass_200
+          PriceClass: PriceClass_100
           ViewerCertificate:
             AcmCertificateArn: ${env:CERTIFICATE_ARN}
             MinimumProtocolVersion: TLSv1.1_2016
