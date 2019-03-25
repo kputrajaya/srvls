@@ -24,8 +24,8 @@ steps:
       - python manage.py collectstatic
       - apk add --update nodejs-npm
       - npm install
-      - $(npm bin)/serverless deploy
-      # - $(npm bin)/serverless deploy function -f app
+      # - $(npm bin)/serverless deploy
+      - $(npm bin)/serverless deploy function -f app
 
 volumes:
   - name: npm
