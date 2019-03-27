@@ -1,4 +1,4 @@
-service: ${self:custom.var.projectName}
+service: ${env:PROJECT_NAME}
 
 provider:
   name: aws
@@ -10,8 +10,8 @@ provider:
   environment:
     MAILGUN_USER: ${env:MAILGUN_USER}
     MAILGUN_PASSWORD: ${env:MAILGUN_PASSWORD}
-    STORAGES_BUCKET_NAME: ${self:custom.var.s3BucketName}
-    STORAGES_CUSTOM_DOMAIN: ${self:custom.var.cdnHostName}
+    STORAGES_BUCKET_NAME: ${env:BUCKET_NAME}
+    STORAGES_CUSTOM_DOMAIN: ${env:CDN_DOMAIN}
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -32,17 +32,12 @@ plugins:
   - serverless-wsgi
 
 custom:
-  var:
-    projectName: srvls
-    hostName: kputrajaya.com
-    s3BucketName: ${self:custom.var.projectName}-${opt:stage, 'dev'}
-    cdnHostName: cdn-${self:custom.var.projectName}.${self:custom.var.hostName}
   customDomain:
-    domainName: ${self:custom.var.projectName}.${self:custom.var.hostName}
+    domainName: ${env:PROJECT_NAME}.${env:HOST_NAME}
   pythonRequirements:
     dockerizePip: non-linux
   wsgi:
-    app: ${self:custom.var.projectName}.wsgi.application
+    app: ${env:PROJECT_NAME}.wsgi.application
     packRequirements: false
 
 resources:
@@ -51,23 +46,23 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         AccessControl: PublicRead
-        BucketName: ${self:custom.var.s3BucketName}
+        BucketName: ${env:BUCKET_NAME}
     CloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:
         DistributionConfig:
           Aliases:
-            - ${self:custom.var.cdnHostName}
+            - ${env:CDN_DOMAIN}
           DefaultCacheBehavior:
-            TargetOriginId: ${self:custom.var.projectName}
+            TargetOriginId: ${env:PROJECT_NAME}
             ViewerProtocolPolicy: 'redirect-to-https'
             DefaultTTL: 2592000
             ForwardedValues:
               QueryString: false
           Enabled: true
           Origins:
-            - Id: ${self:custom.var.projectName}
-              DomainName: ${self:custom.var.s3BucketName}.s3.amazonaws.com
+            - Id: ${env:PROJECT_NAME}
+              DomainName: ${env:BUCKET_NAME}.s3.amazonaws.com
               S3OriginConfig:
                 OriginAccessIdentity: ''
           PriceClass: PriceClass_200
@@ -78,14 +73,14 @@ resources:
     Route53RecordSet:
       Type: AWS::Route53::RecordSetGroup
       Properties:
-        HostedZoneName: ${self:custom.var.hostName}.
+        HostedZoneName: ${env:HOST_NAME}.
         RecordSets:
-        - Name: ${self:custom.var.cdnHostName}
+        - Name: ${env:CDN_DOMAIN}
           Type: A
           AliasTarget:
             HostedZoneId: Z2FDTNDATAQYW2
             DNSName: !GetAtt [CloudFrontDistribution, DomainName]
-        - Name: ${self:custom.var.cdnHostName}
+        - Name: ${env:CDN_DOMAIN}
           Type: AAAA
           AliasTarget:
             HostedZoneId: Z2FDTNDATAQYW2

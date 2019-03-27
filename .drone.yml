@@ -15,20 +15,25 @@ steps:
         from_secret: MAILGUN_PASSWORD
       CERTIFICATE_ARN:
         from_secret: CERTIFICATE_ARN
-      SLS_DEBUG: "*"
+      SLS_DEBUG: '*'
+      PROJECT_NAME: srvls
+      HOST_NAME: kputrajaya.com
+      DEPLOY_STAGE: dev
     volumes:
       - name: npm
         path: /drone/src/node_modules
       - name: pip
         path: /.pip
     commands:
+      - export BUCKET_NAME=$PROJECT_NAME-$DEPLOY_STAGE
+      - export CDN_DOMAIN=cdn-$PROJECT_NAME.$HOST_NAME
       - apk add --update gcc jpeg-dev musl-dev nodejs-npm zlib-dev
       - pip install --cache-dir=/.pip -r requirements.txt flake8 flake8-import-order
       - flake8
       - python manage.py test apps
       - npm install
-      # - $(npm bin)/serverless deploy
-      - $(npm bin)/serverless deploy function -f app
+      # - $(npm bin)/serverless deploy -s $DEPLOY_STAGE
+      - $(npm bin)/serverless deploy function -f app -s $DEPLOY_STAGE
       - python manage.py collectstatic --noinput --settings=srvls.settings.production
 
 volumes:
