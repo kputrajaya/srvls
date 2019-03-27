@@ -27,9 +27,9 @@ steps:
       - flake8
       - python manage.py test apps
       - npm install
-      - $(npm bin)/serverless deploy
-      # - $(npm bin)/serverless deploy function -f app
-      - python manage.py collectstatic --settings=srvls.settings.production
+      # - $(npm bin)/serverless deploy
+      - $(npm bin)/serverless deploy function -f app
+      - python manage.py collectstatic --noinput --settings=srvls.settings.production
 
 volumes:
   - name: npm
