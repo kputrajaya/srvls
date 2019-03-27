@@ -130,9 +130,9 @@ STATIC_URL = '/static/'
 AWS_ACCESS_KEY_ID = str(os.environ.get('AWS_ACCESS_KEY_ID', ''))
 AWS_SECRET_ACCESS_KEY = str(os.environ.get('AWS_SECRET_ACCESS_KEY', ''))
 AWS_S3_REGION_NAME = str(os.environ.get('AWS_REGION', 'ap-southeast-1'))
-AWS_STORAGE_BUCKET_NAME = str(os.environ.get('STORAGES_BUCKET_NAME', ''))
+AWS_STORAGE_BUCKET_NAME = str(os.environ.get('BUCKET_NAME', ''))
 AWS_DEFAULT_ACL = None
-AWS_S3_CUSTOM_DOMAIN = str(os.environ.get('STORAGES_CUSTOM_DOMAIN', ''))
+AWS_S3_CUSTOM_DOMAIN = str(os.environ.get('CDN_DOMAIN', ''))
 AWS_S3_OBJECT_PARAMETERS = {'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT', 'CacheControl': 'max-age=94608000'}
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
