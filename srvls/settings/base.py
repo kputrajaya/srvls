@@ -89,8 +89,8 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 
 EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get('MAILGUN_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_PASSWORD')
+EMAIL_HOST_USER = str(os.environ.get('MAILGUN_USER', ''))
+EMAIL_HOST_PASSWORD = str(os.environ.get('MAILGUN_PASSWORD', ''))
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Kevin <no-reply@kputrajaya.com>'
 
@@ -127,12 +127,12 @@ STATIC_URL = '/static/'
 
 # Third party settings
 
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_S3_REGION_NAME = 'ap-southeast-1'
-AWS_STORAGE_BUCKET_NAME = os.environ.get('STORAGES_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = str(os.environ.get('AWS_ACCESS_KEY_ID', ''))
+AWS_SECRET_ACCESS_KEY = str(os.environ.get('AWS_SECRET_ACCESS_KEY', ''))
+AWS_S3_REGION_NAME = str(os.environ.get('AWS_REGION', 'ap-southeast-1'))
+AWS_STORAGE_BUCKET_NAME = str(os.environ.get('STORAGES_BUCKET_NAME', ''))
 AWS_DEFAULT_ACL = None
-AWS_S3_CUSTOM_DOMAIN = os.environ.get('STORAGES_CUSTOM_DOMAIN')
+AWS_S3_CUSTOM_DOMAIN = str(os.environ.get('STORAGES_CUSTOM_DOMAIN', ''))
 AWS_S3_OBJECT_PARAMETERS = {'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT', 'CacheControl': 'max-age=94608000'}
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
