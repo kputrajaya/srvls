@@ -51,9 +51,9 @@ resources:
   Resources:
     S3Bucket:
       Type: AWS::S3::Bucket
-        Properties:
-          AccessControl: PublicRead
-          BucketName: ${self:custom.var.s3BucketName}
+      Properties:
+        AccessControl: PublicRead
+        BucketName: ${self:custom.var.s3BucketName}
     CloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:

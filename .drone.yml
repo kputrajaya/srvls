@@ -26,7 +26,7 @@ steps:
       - pip install --cache-dir=/.pip -r requirements.txt flake8 flake8-import-order
       - flake8
       - python manage.py test apps
-      - python manage.py collectstatic
+      - python manage.py collectstatic --settings=srvls.settings.production
       - npm install
       - $(npm bin)/serverless deploy
       # - $(npm bin)/serverless deploy function -f app
