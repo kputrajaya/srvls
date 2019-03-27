@@ -131,7 +131,7 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_S3_REGION_NAME = os.environ.get('AWS_REGION')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('BUCKET_NAME')
-AWS_DEFAULT_ACL = None
+AWS_DEFAULT_ACL = 'public-read'
 AWS_S3_CUSTOM_DOMAIN = os.environ.get('CDN_DOMAIN')
 AWS_S3_OBJECT_PARAMETERS = {'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT', 'CacheControl': 'max-age=94608000'}
 AWS_QUERYSTRING_AUTH = False
