@@ -10,8 +10,8 @@ provider:
   environment:
     MAILGUN_USER: ${env:MAILGUN_USER}
     MAILGUN_PASSWORD: ${env:MAILGUN_PASSWORD}
-    STORAGES_BUCKET_NAME: ${env:BUCKET_NAME}
-    STORAGES_CUSTOM_DOMAIN: ${env:CDN_DOMAIN}
+    BUCKET_NAME: ${env:BUCKET_NAME}
+    CDN_DOMAIN: ${env:CDN_DOMAIN}
   iamRoleStatements:
     - Effect: "Allow"
       Action:
