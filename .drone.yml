@@ -15,10 +15,11 @@ steps:
         from_secret: MAILGUN_PASSWORD
       CERTIFICATE_ARN:
         from_secret: CERTIFICATE_ARN
-      SLS_DEBUG: '*'
-      PROJECT_NAME: srvls
+      AWS_REGION: ap-southeast-1
       HOST_NAME: kputrajaya.com
+      PROJECT_NAME: srvls
       DEPLOY_STAGE: dev
+      SLS_DEBUG: '*'
     volumes:
       - name: npm
         path: /drone/src/node_modules
