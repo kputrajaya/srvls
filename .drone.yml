@@ -22,7 +22,7 @@ steps:
       - name: pip
         path: /.pip
     commands:
-      - apk add --update gcc jpeg-dev nodejs-npm zlib-dev
+      - apk add --update gcc jpeg-dev musl-dev nodejs-npm zlib-dev
       - pip install --cache-dir=/.pip -r requirements.txt flake8 flake8-import-order
       - flake8
       - python manage.py test apps
