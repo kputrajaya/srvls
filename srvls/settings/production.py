@@ -10,4 +10,5 @@ DATABASES = {
     }
 }
 
-STATIC_URL = 'https://cdn-srvls.kputrajaya.com/static/'
+STATICFILES_STORAGE = 'srvls.aws.StaticStorage'
+DEFAULT_FILE_STORAGE = 'srvls.aws.MediaStorage'

@@ -7,6 +7,13 @@ provider:
   memorySize: 256
   timeout: 10
   versionFunctions: false
+  environment:
+    AWS_ACCESS_KEY_ID: ${env:AWS_ACCESS_KEY_ID}
+    AWS_SECRET_ACCESS_KEY: ${env:AWS_SECRET_ACCESS_KEY}
+    MAILGUN_USER: ${env:MAILGUN_USER}
+    MAILGUN_PASSWORD: ${env:MAILGUN_PASSWORD}
+    STORAGES_BUCKET_NAME: ${self:custom.var.s3BucketName}
+    STORAGES_CUSTOM_DOMAIN: ${self:custom.var.cdnHostName}
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -30,6 +37,8 @@ custom:
   var:
     projectName: srvls
     hostName: kputrajaya.com
+    s3BucketName: ${self:custom.var.projectName}-${opt:stage, 'dev'}
+    cdnHostName: cdn-${self:custom.var.projectName}.${self:custom.var.hostName}
   customDomain:
     domainName: ${self:custom.var.projectName}.${self:custom.var.hostName}
   pythonRequirements:
@@ -40,12 +49,17 @@ custom:
 
 resources:
   Resources:
+    S3Bucket:
+      Type: AWS::S3::Bucket
+        Properties:
+          AccessControl: PublicRead
+          BucketName: ${self:custom.var.s3BucketName}
     CloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:
         DistributionConfig:
           Aliases:
-            - cdn-${self:custom.var.projectName}.${self:custom.var.hostName}
+            - ${self:custom.var.cdnHostName}
           DefaultCacheBehavior:
             TargetOriginId: ${self:custom.var.projectName}
             ViewerProtocolPolicy: 'redirect-to-https'
@@ -55,9 +69,7 @@ resources:
           Enabled: true
           Origins:
             - Id: ${self:custom.var.projectName}
-              DomainName: ${self:custom.customDomain.domainName}
-              CustomOriginConfig:
-                OriginProtocolPolicy: https-only
+              DomainName: ${self:custom.var.s3BucketName}.s3.amazonaws.com
           PriceClass: PriceClass_200
           ViewerCertificate:
             AcmCertificateArn: ${env:CERTIFICATE_ARN}
@@ -68,12 +80,12 @@ resources:
       Properties:
         HostedZoneName: ${self:custom.var.hostName}.
         RecordSets:
-        - Name: cdn-${self:custom.var.projectName}.${self:custom.var.hostName}
+        - Name: ${self:custom.var.cdnHostName}
           Type: A
           AliasTarget:
             HostedZoneId: Z2FDTNDATAQYW2
             DNSName: !GetAtt [CloudFrontDistribution, DomainName]
-        - Name: cdn-${self:custom.var.projectName}.${self:custom.var.hostName}
+        - Name: ${self:custom.var.cdnHostName}
           Type: AAAA
           AliasTarget:
             HostedZoneId: Z2FDTNDATAQYW2
