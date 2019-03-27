@@ -68,6 +68,8 @@ resources:
           Origins:
             - Id: ${self:custom.var.projectName}
               DomainName: ${self:custom.var.s3BucketName}.s3.amazonaws.com
+              S3OriginConfig:
+                OriginAccessIdentity:
           PriceClass: PriceClass_200
           ViewerCertificate:
             AcmCertificateArn: ${env:CERTIFICATE_ARN}
