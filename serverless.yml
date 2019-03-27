@@ -8,8 +8,6 @@ provider:
   timeout: 10
   versionFunctions: false
   environment:
-    AWS_ACCESS_KEY_ID: ${env:AWS_ACCESS_KEY_ID}
-    AWS_SECRET_ACCESS_KEY: ${env:AWS_SECRET_ACCESS_KEY}
     MAILGUN_USER: ${env:MAILGUN_USER}
     MAILGUN_PASSWORD: ${env:MAILGUN_PASSWORD}
     STORAGES_BUCKET_NAME: ${self:custom.var.s3BucketName}
