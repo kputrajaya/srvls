@@ -22,11 +22,11 @@ steps:
       - name: pip
         path: /.pip
     commands:
+      - apk add --update nodejs-npm zlib-dev
       - pip install --cache-dir=/.pip -r requirements.txt flake8 flake8-import-order
       - flake8
       - python manage.py test apps
       - python manage.py collectstatic
-      - apk add --update nodejs-npm
       - npm install
       - $(npm bin)/serverless deploy
       # - $(npm bin)/serverless deploy function -f app
