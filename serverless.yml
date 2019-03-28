@@ -35,7 +35,7 @@ custom:
   customDomain:
     domainName: ${env:PROJECT_NAME}.${env:HOST_NAME}
   pythonRequirements:
-    dockerizePip: non-linux
+    dockerFile: Dockerfile
   wsgi:
     app: ${env:PROJECT_NAME}.wsgi.application
     packRequirements: false
