@@ -32,7 +32,7 @@ steps:
       - pip install --cache-dir=/.pip -r requirements.txt flake8 flake8-import-order
       - flake8
       - python manage.py test apps
-      - pip show Pillow
+      - ls /usr/local/lib/python3.7/site-packages
       - exit 1
       - mkdir lib && cp /lib/ld-musl-x86_64.so.1 /lib/libc.musl-x86_64.so.1 /lib/libz.so.1 /usr/lib/libjpeg.so.8 /usr/lib/libturbojpeg.so.0 lib/
       - npm install
