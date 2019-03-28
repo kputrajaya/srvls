@@ -3,7 +3,7 @@ name: default
 
 steps:
   - name: publish
-    image: amazonlinux:1
+    image: python:3.7-alpine
     environment:
       AWS_ACCESS_KEY_ID:
         from_secret: AWS_ACCESS_KEY_ID
@@ -28,8 +28,7 @@ steps:
     commands:
       - export BUCKET_NAME=$PROJECT_NAME-$DEPLOY_STAGE
       - export CDN_DOMAIN=cdn-$PROJECT_NAME.$HOST_NAME
-      - yum check-update
-      - yum -y install gcc libjpeg-devel musl-devel nodejs python37 python37-pip zlib-devel
+      - apk add --update gcc jpeg-dev musl-dev nodejs-npm zlib-dev
       - pip install --cache-dir=/.pip -r requirements.txt flake8 flake8-import-order
       - flake8
       - python manage.py test apps
