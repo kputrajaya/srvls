@@ -28,6 +28,7 @@ steps:
     commands:
       - export BUCKET_NAME=$PROJECT_NAME-$DEPLOY_STAGE
       - export CDN_DOMAIN=cdn-$PROJECT_NAME.$HOST_NAME
+      - yum check-update
       - yum -y install gcc libjpeg-devel musl-devel nodejs python37 python37-pip zlib-devel
       - pip install --cache-dir=/.pip -r requirements.txt flake8 flake8-import-order
       - flake8
