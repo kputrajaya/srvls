@@ -13,7 +13,11 @@ class Logs(View):
     def get(self, request):
         logs = Log.objects.order_by('-pk')[0:100]
         data = [
-            {'message': x.message, 'created_at': x.created_at}
+            {
+                'message': x.message,
+                'image': x.image.url if x.image else None,
+                'created_at': x.created_at
+            }
             for x in logs
         ]
         return JsonResponse(data, safe=False)
