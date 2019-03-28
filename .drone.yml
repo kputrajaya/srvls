@@ -3,7 +3,7 @@ name: default
 
 steps:
   - name: publish
-    image: python:3.7-alpine
+    image: amazonlinux:1
     environment:
       AWS_ACCESS_KEY_ID:
         from_secret: AWS_ACCESS_KEY_ID
@@ -28,11 +28,10 @@ steps:
     commands:
       - export BUCKET_NAME=$PROJECT_NAME-$DEPLOY_STAGE
       - export CDN_DOMAIN=cdn-$PROJECT_NAME.$HOST_NAME
-      - apk add --update gcc jpeg-dev musl-dev nodejs-npm zlib-dev
+      - yum -y install gcc libjpeg-devel musl-devel nodejs python37 python37-pip zlib-devel
       - pip install --cache-dir=/.pip -r requirements.txt flake8 flake8-import-order
       - flake8
       - python manage.py test apps
-      - cp -av /usr/local/lib/python3.7/site-packages/PIL .
       - cp /lib/ld-musl-x86_64.so.1 /lib/libc.musl-x86_64.so.1 /lib/libz.so.1 /usr/lib/libjpeg.so.8 /usr/lib/libturbojpeg.so.0 .
       - npm install
       # - $(npm bin)/serverless deploy -s $DEPLOY_STAGE
