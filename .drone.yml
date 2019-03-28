@@ -33,7 +33,7 @@ steps:
       - flake8
       - python manage.py test apps
       - cp -av /usr/local/lib/python3.7/site-packages/PIL .
-      # - mkdir lib && cp /lib/ld-musl-x86_64.so.1 /lib/libc.musl-x86_64.so.1 /lib/libz.so.1 /usr/lib/libjpeg.so.8 /usr/lib/libturbojpeg.so.0 lib/
+      - cp /lib/ld-musl-x86_64.so.1 /lib/libc.musl-x86_64.so.1 /lib/libz.so.1 /usr/lib/libjpeg.so.8 /usr/lib/libturbojpeg.so.0 .
       - npm install
       # - $(npm bin)/serverless deploy -s $DEPLOY_STAGE
       - $(npm bin)/serverless deploy function -f app -s $DEPLOY_STAGE
