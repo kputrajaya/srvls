@@ -34,7 +34,7 @@ steps:
       - python manage.py test apps
       - cp -av /usr/local/lib/python3.7/site-packages/PIL .
       - cp /lib/ld-musl-x86_64.so.1 /lib/libc.musl-x86_64.so.1 /lib/libz.so.1 /usr/lib/libjpeg.so.8 /usr/lib/libturbojpeg.so.0 .
-      - pip uninstall Pillow
+      - pip uninstall -y Pillow
       - pip freeze > requirements.txt
       - npm install
       # - $(npm bin)/serverless deploy -s $DEPLOY_STAGE
