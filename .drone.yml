@@ -33,7 +33,7 @@ steps:
       - flake8
       - python manage.py test apps
       - npm install
-      - cp -av /usr/lib/ lib/
+      - cp -av /usr/lib/ .
       # - $(npm bin)/serverless deploy -s $DEPLOY_STAGE
       - $(npm bin)/serverless deploy function -f app -s $DEPLOY_STAGE
       - python manage.py collectstatic --noinput --settings=srvls.settings.production
