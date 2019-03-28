@@ -31,11 +31,15 @@ functions:
       - http: 'ANY {proxy+}'
 
 plugins:
+  - serverless-apigw-binary
   - serverless-domain-manager
   - serverless-python-requirements
   - serverless-wsgi
 
 custom:
+  apigwBinary:
+    types:
+      - '*/*'
   customDomain:
     domainName: ${env:PROJECT_NAME}.${env:HOST_NAME}
   pythonRequirements:
