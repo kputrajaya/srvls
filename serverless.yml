@@ -14,14 +14,21 @@ provider:
     BUCKET_NAME: ${env:BUCKET_NAME}
     CDN_DOMAIN: ${env:CDN_DOMAIN}
   iamRoleStatements:
-    - Effect: "Allow"
+    - Effect: Allow
       Action:
         - s3:GetObject
         - s3:GetObjectAcl
         - s3:PutObject
         - s3:PutObjectAcl
         - s3:DeleteObject
-      Resource: "arn:aws:s3:::*"
+      Resource: arn:aws:s3:::*
+    - Effect: Allow
+      Action:
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+        - logs:DescribeLogStreams
+      Resource: arn:aws:logs:*:*:*
 
 functions:
   app:
