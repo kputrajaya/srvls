@@ -130,8 +130,7 @@ STATIC_URL = '/static/'
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_DEFAULT_REGION = os.environ.get('AWS_REGION')
-AWS_S3_REGION_NAME = AWS_DEFAULT_REGION
+AWS_S3_REGION_NAME = os.environ.get('AWS_REGION')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('BUCKET_NAME')
 AWS_DEFAULT_ACL = 'public-read'
 AWS_S3_CUSTOM_DOMAIN = os.environ.get('CDN_DOMAIN')
@@ -139,6 +138,9 @@ AWS_S3_OBJECT_PARAMETERS = {'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT', 'CacheCo
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
 AWS_IS_GZIPPED = True
+
+AWS_DEFAULT_REGION = os.environ.get('AWS_REGION')
+AWS_LOG_GROUP = os.environ.get('AWS_LAMBDA_LOG_GROUP_NAME')
 
 
 # Import local settings

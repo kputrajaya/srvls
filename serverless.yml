@@ -25,13 +25,13 @@ provider:
     - Effect: Allow
       Action:
         - logs:CreateLogGroup
-      Resource: arn:aws:logs:*:*:log-group:*
+      Resource: arn:aws:logs:${env:AWS_REGION}:*:log-group:*
     - Effect: Allow
       Action:
         - logs:DescribeLogStreams
         - logs:CreateLogStream
         - logs:PutLogEvents
-      Resource: arn:aws:logs:*:*:log-group:*:log-stream:*
+      Resource: arn:aws:logs:${env:AWS_REGION}:*:log-group:*:*:*
 
 functions:
   app:

@@ -1,5 +1,5 @@
 from .base import *  # noqa: F401 F403
-from .base import AWS_STORAGE_BUCKET_NAME
+from .base import AWS_LOG_GROUP
 
 
 DEBUG = False
@@ -23,7 +23,7 @@ LOGGING = {
     'handlers': {
         'cloudwatch': {
             'class': 'watchtower.django.DjangoCloudWatchLogHandler',
-            'log_group': AWS_STORAGE_BUCKET_NAME,
+            'log_group': f'{AWS_LOG_GROUP}/logs',
             'send_interval': 15,
             'formatter': 'simple'
         }
