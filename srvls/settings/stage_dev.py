@@ -22,7 +22,7 @@ LOGGING = {
     },
     'handlers': {
         'cloudwatch': {
-            'class': 'watchtower.django.DjangoCloudWatchLogHandler',
+            'class': 'watchtower.CloudWatchLogHandler',
             'log_group': f'{AWS_LOG_GROUP}/logs',
             'send_interval': 15,
             'formatter': 'simple'
