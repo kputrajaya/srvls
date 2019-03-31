@@ -17,13 +17,11 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'aws': {
-            'format': '%(asctime)s [%(levelname)-8s] %(message)s',
-            'datefmt': '%Y-%m-%d %H:%M:%S'
+            'format': '[%(levelname)-8s] %(message)s'
         }
     },
     'handlers': {
         'cloudwatch': {
-            'level': 'DEBUG',
             'class': 'watchtower.CloudWatchLogHandler',
             'log_group': AWS_STORAGE_BUCKET_NAME,
             'formatter': 'aws'
