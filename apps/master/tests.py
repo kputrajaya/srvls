@@ -3,6 +3,10 @@ from django.urls import reverse
 
 
 class ViewTests(TestCase):
+    def test_get_ping(self):
+        res = self.client.get(reverse('master:ping'))
+        self.assertEqual(res.status_code, 200)
+
     def test_get_log(self):
         res = self.client.get(reverse('master:logs'))
         self.assertEqual(res.status_code, 200)

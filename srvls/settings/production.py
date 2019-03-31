@@ -1,12 +1,5 @@
-from boto3.session import Session
-
 from .base import *  # noqa: F401 F403
-from .base import (
-    AWS_ACCESS_KEY_ID,
-    AWS_S3_REGION_NAME,
-    AWS_SECRET_ACCESS_KEY,
-    AWS_STORAGE_BUCKET_NAME
-)
+from .base import AWS_STORAGE_BUCKET_NAME
 
 
 DEBUG = False
@@ -32,17 +25,17 @@ LOGGING = {
         'cloudwatch': {
             'level': 'DEBUG',
             'class': 'watchtower.CloudWatchLogHandler',
-            # 'boto3_session': Session(
-            #     aws_access_key_id=AWS_ACCESS_KEY_ID,
-            #     aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-            #     region_name=AWS_S3_REGION_NAME
-            # ),
             'log_group': AWS_STORAGE_BUCKET_NAME,
             'formatter': 'aws'
         }
     },
     'loggers': {
         'django': {
+            'level': 'WARNING',
+            'handlers': ['cloudwatch'],
+            'propagate': False
+        },
+        'master': {
             'level': 'INFO',
             'handlers': ['cloudwatch'],
             'propagate': False

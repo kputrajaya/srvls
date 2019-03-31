@@ -12,6 +12,11 @@ from .models import Log
 logger = logging.getLogger(__name__)
 
 
+class Ping(View):
+    def get(self, request):
+        return JsonResponse('Pong!', safe=False)
+
+
 @method_decorator(csrf_exempt, name='dispatch')
 class Logs(View):
     def get(self, request):
