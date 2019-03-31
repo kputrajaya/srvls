@@ -5,6 +5,7 @@ steps:
   - name: publish
     image: lambci/lambda:build-python3.7
     environment:
+      # Secrets
       AWS_ACCESS_KEY_ID:
         from_secret: AWS_ACCESS_KEY_ID
       AWS_SECRET_ACCESS_KEY:
@@ -16,10 +17,11 @@ steps:
       CERTIFICATE_ARN:
         from_secret: CERTIFICATE_ARN
 
+      # Configurations
       PROJECT_NAME: srvls
-      DEPLOY_STAGE: dev
       HOST_NAME: kputrajaya.com
       AWS_REGION: ap-southeast-1
+      DEPLOY_STAGE: dev
       SLS_DEBUG: '*'
     volumes:
       - name: npm
