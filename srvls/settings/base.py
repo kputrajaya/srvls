@@ -17,6 +17,7 @@ ALLOWED_HOSTS = ('*',)
 INSTALLED_APPS = [
     'master',
 
+    'debug_toolbar',
     'zappa_django_utils',
 
     'django.contrib.admin',
