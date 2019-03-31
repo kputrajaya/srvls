@@ -26,9 +26,10 @@ provider:
       Action:
         - logs:CreateLogGroup
         - logs:CreateLogStream
-        - logs:PutLogEvents
+        - logs:DescribeLogGroups
         - logs:DescribeLogStreams
-      Resource: arn:aws:logs:*:*:*
+        - logs:PutLogEvents
+      Resource: arn:aws:logs:::*
 
 functions:
   app:

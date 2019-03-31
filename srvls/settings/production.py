@@ -32,11 +32,11 @@ LOGGING = {
         'cloudwatch': {
             'level': 'DEBUG',
             'class': 'watchtower.CloudWatchLogHandler',
-            'boto3_session': Session(
-                aws_access_key_id=AWS_ACCESS_KEY_ID,
-                aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-                region_name=AWS_S3_REGION_NAME
-            ),
+            # 'boto3_session': Session(
+            #     aws_access_key_id=AWS_ACCESS_KEY_ID,
+            #     aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+            #     region_name=AWS_S3_REGION_NAME
+            # ),
             'log_group': AWS_STORAGE_BUCKET_NAME,
             'formatter': 'aws'
         }
