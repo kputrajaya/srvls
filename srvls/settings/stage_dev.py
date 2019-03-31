@@ -24,7 +24,7 @@ LOGGING = {
         'cloudwatch': {
             'class': 'watchtower.CloudWatchLogHandler',
             'log_group': f'{AWS_LOG_GROUP}/logs',
-            'send_interval': 15,
+            'use_queues': False,
             'formatter': 'simple'
         }
     },
