@@ -32,13 +32,11 @@ LOGGING = {
     'loggers': {
         'django': {
             'level': 'WARNING',
-            'handlers': ['cloudwatch'],
-            'propagate': False
+            'handlers': ['cloudwatch']
         },
         'master': {
             'level': 'INFO',
-            'handlers': ['cloudwatch'],
-            'propagate': False
+            'handlers': ['cloudwatch']
         }
     },
 }
