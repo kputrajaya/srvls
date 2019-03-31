@@ -6,6 +6,8 @@ Base for small Django projects running serverless.
 
 Built to shorten setup time, cut down server cost, and enforce good practices.
 
+## Features
+
 #### Develop:
 * Debugging
 
