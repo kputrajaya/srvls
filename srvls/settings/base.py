@@ -139,8 +139,6 @@ AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
 AWS_IS_GZIPPED = True
 
-AWS_LOG_GROUP = os.environ.get('AWS_LAMBDA_LOG_GROUP_NAME')
-
 
 # Import local settings
 
