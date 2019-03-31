@@ -24,6 +24,7 @@ LOGGING = {
         'cloudwatch': {
             'class': 'watchtower.CloudWatchLogHandler',
             'log_group': AWS_STORAGE_BUCKET_NAME,
+            'send_interval': 10,
             'formatter': 'aws'
         }
     },
