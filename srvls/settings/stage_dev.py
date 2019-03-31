@@ -16,16 +16,16 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
-        'aws': {
+        'simple': {
             'format': '[%(levelname)-8s] %(message)s'
         }
     },
     'handlers': {
         'cloudwatch': {
-            'class': 'watchtower.CloudWatchLogHandler',
+            'class': 'watchtower.django.DjangoCloudWatchLogHandler',
             'log_group': AWS_STORAGE_BUCKET_NAME,
-            'send_interval': 10,
-            'formatter': 'aws'
+            'send_interval': 15,
+            'formatter': 'simple'
         }
     },
     'loggers': {
