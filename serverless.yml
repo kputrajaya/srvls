@@ -8,7 +8,7 @@ provider:
   timeout: 10
   versionFunctions: false
   environment:
-    DJANGO_SETTINGS_MODULE: srvls.settings.production
+    DJANGO_SETTINGS_MODULE: ${env:DJANGO_SETTINGS_MODULE}
     MAILGUN_USER: ${env:MAILGUN_USER}
     MAILGUN_PASSWORD: ${env:MAILGUN_PASSWORD}
     BUCKET_NAME: ${env:BUCKET_NAME}

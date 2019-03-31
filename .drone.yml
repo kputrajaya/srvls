@@ -15,10 +15,12 @@ steps:
         from_secret: MAILGUN_PASSWORD
       CERTIFICATE_ARN:
         from_secret: CERTIFICATE_ARN
-      AWS_REGION: ap-southeast-1
-      HOST_NAME: kputrajaya.com
+
       PROJECT_NAME: srvls
       DEPLOY_STAGE: dev
+      HOST_NAME: kputrajaya.com
+      AWS_REGION: ap-southeast-1
+      DJANGO_SETTINGS_MODULE: srvls.settings.production
       SLS_DEBUG: '*'
     volumes:
       - name: npm
@@ -26,17 +28,23 @@ steps:
       - name: pip
         path: /.pip
     commands:
+      # Dynamic variables
       - export BUCKET_NAME=$PROJECT_NAME-$DEPLOY_STAGE
       - export CDN_DOMAIN=cdn-$PROJECT_NAME.$HOST_NAME
+      - export AWS_DEFAULT_REGION=$AWS_REGION
+
+      # Testing
       - pip install --cache-dir=/.pip -r requirements.txt flake8 flake8-import-order
       - flake8
       - python manage.py test apps
+
+      # Deployment
       - curl -sL https://rpm.nodesource.com/setup_10.x | bash -
       - yum install -y nodejs
       - npm install
       - $(npm bin)/serverless deploy -s $DEPLOY_STAGE
       # - $(npm bin)/serverless deploy function -f app -s $DEPLOY_STAGE
-      - python manage.py collectstatic --noinput --settings=srvls.settings.production
+      - python manage.py collectstatic --noinput
 
 volumes:
   - name: npm
