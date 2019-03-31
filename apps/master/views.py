@@ -29,7 +29,7 @@ class Logs(View):
             }
             for x in logs
         ]
-        logger.info('Successfully retrieved Logs: {}'.format(json.dumps(data, cls=DjangoJSONEncoder)))
+        logger.info('Logs retrieved: {}'.format(json.dumps(data, cls=DjangoJSONEncoder)))
         return JsonResponse(data, safe=False)
 
     def post(self, request):
@@ -40,5 +40,5 @@ class Logs(View):
             return HttpResponse(status=400)
 
         Log.objects.create(message=message)
-        logger.info('Successfully created Logs {}'.format(json.dumps(data, cls=DjangoJSONEncoder)))
+        logger.info('Log created: {}'.format(json.dumps(data, cls=DjangoJSONEncoder)))
         return HttpResponse(status=201)
