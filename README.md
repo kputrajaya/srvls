@@ -13,7 +13,7 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
 
 #### Build:
 * Code linting
-* Unit testing
+* Unit testing with coverage
 * Stack and app deployment
 * Domain management
 
@@ -28,7 +28,9 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
 * [Python](https://www.python.org/)
 * [Django](https://www.djangoproject.com/)
 * [Django Debug Toolbar](https://github.com/jazzband/django-debug-toolbar)
+* [Django Nose](https://github.com/django-nose/django-nose)
 * [Django Storages](https://github.com/jschneier/django-storages)
+* [Coverage](https://github.com/nedbat/coveragepy)
 * [Mailgun](https://www.mailgun.com/)
 * [S3 SQLite](https://github.com/Miserlou/zappa-django-utils)
 * [Watchtower](https://github.com/kislyuk/watchtower)
