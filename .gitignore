@@ -4,5 +4,7 @@ __pycache__/
 media/
 node_modules/
 static/
+
 *.sqlite3
+.coverage
 local_settings.py

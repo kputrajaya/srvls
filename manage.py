@@ -12,4 +12,17 @@ if __name__ == '__main__':
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+
+    testing = len(sys.argv) > 1 and sys.argv[1] == 'test'
+    if testing:
+        import coverage
+        cov = coverage.coverage()
+        cov.erase()
+        cov.start()
+
     execute_from_command_line(sys.argv)
+
+    if testing:
+        cov.stop()
+        cov.save()
+        cov.report()
