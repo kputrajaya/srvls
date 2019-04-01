@@ -25,7 +25,6 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
 
 ## Built With
 
-* [Python](https://www.python.org/)
 * [Django](https://www.djangoproject.com/)
 * [Django Debug Toolbar](https://github.com/jazzband/django-debug-toolbar)
 * [Django Nose](https://github.com/django-nose/django-nose)
