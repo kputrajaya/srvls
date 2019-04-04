@@ -41,8 +41,8 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
 ## How to Use
 
 * Configure `PROJECT_NAME` and `HOST_NAME` in `.drone.yml`
-* Setup Drone (v1.0.0) and enable for your repository ([Ref](https://docs.drone.io/installation/github/single-machine/))
-* Check "Trusted" flag to enable volume mounting ([Ref](https://docs.drone.io/user-guide/pipeline/volumes/))
+* Setup Drone (v1.0.0) and enable for your repository ([Reference](https://docs.drone.io/installation/github/single-machine/))
+* Check "Trusted" flag to enable volume mounting ([Reference](https://docs.drone.io/user-guide/pipeline/volumes/))
 * Add necessary secrets:
     * `AWS_ACCESS_KEY_ID`
     * `AWS_SECRET_ACCESS_KEY`
