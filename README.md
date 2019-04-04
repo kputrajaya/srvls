@@ -40,7 +40,6 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
 
 ## How to Use
 
-* Configure `PROJECT_NAME` and `HOST_NAME` in `.drone.yml`
 * Setup Drone (v1.0.0) ([Reference](https://docs.drone.io/installation/github/single-machine/))
 * Enable Drone for your repository
 * Check "Trusted" flag to enable volume mounting ([Reference](https://docs.drone.io/user-guide/pipeline/volumes/))
@@ -51,4 +50,5 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
     * `MAILGUN_USER`
     * `MAILGUN_PASSWORD`
     * `CERTIFICATE_ARN`
+* Configure `PROJECT_NAME` and `HOST_NAME` in `.drone.yml`
 * Start pushing to `master` branch
