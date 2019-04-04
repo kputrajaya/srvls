@@ -43,12 +43,12 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
 * Setup Drone (v1.0.0) ([Reference](https://docs.drone.io/installation/github/single-machine/))
 * Enable Drone for your repository
 * Check "Trusted" flag to enable volume mounting ([Reference](https://docs.drone.io/user-guide/pipeline/volumes/))
-* Create mounted folders (`/drone/npm/` and `/drone/pip/`) on host machine
+* Create folders `/drone/npm/` and `/drone/pip/` on host machine
 * Add necessary secrets:
     * `AWS_ACCESS_KEY_ID`
     * `AWS_SECRET_ACCESS_KEY`
     * `MAILGUN_USER`
     * `MAILGUN_PASSWORD`
     * `CERTIFICATE_ARN`
-* Configure `PROJECT_NAME` and `HOST_NAME` in `.drone.yml`
+* Configure `PROJECT_NAME`, `HOST_NAME`, and `AWS_REGION` in `.drone.yml`
 * Start pushing to `master` branch
