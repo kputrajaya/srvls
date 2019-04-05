@@ -40,9 +40,8 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
 
 ## How to Use
 
-* Fork this repository
 * Modify `PROJECT_NAME`, `HOST_NAME`, and `AWS_REGION` in `.drone.yml`
-* [Sign up](https://cloud.drone.io) or [setup](https://docs.drone.io/installation/github/single-machine/) Drone (tested using `v1.0.0`)
+* [Sign up](https://cloud.drone.io) for Drone or [setup locally](https://docs.drone.io/installation/github/single-machine/) (tested using `v1.0.0`)
 * Enable Drone for your repository
 * Add necessary secrets:
     * `AWS_ACCESS_KEY_ID`: Your AWS access key ID (tested using `AdministratorAccess` policy)
