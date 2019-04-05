@@ -40,10 +40,10 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
 
 ## How to Use
 
-* Configure `PROJECT_NAME`, `HOST_NAME`, and `AWS_REGION` in `.drone.yml`
-* [Setup Drone](https://docs.drone.io/installation/github/single-machine/) and get [admin access](https://docs.drone.io/administration/user/admins/) (tested using `v1.0.0`)
-* Enable Drone for your repository and check "Trusted" flag to enable [volume mounting](https://docs.drone.io/user-guide/pipeline/volumes/)
-* Prepare `/drone/npm/` and `/drone/pip/` on host machine for package caches
+* Fork this repository
+* Modify `PROJECT_NAME`, `HOST_NAME`, and `AWS_REGION` in `.drone.yml`
+* [Sign up](https://cloud.drone.io) or [setup](https://docs.drone.io/installation/github/single-machine/) Drone (tested using `v1.0.0`)
+* Enable Drone for your repository
 * Add necessary secrets:
     * `AWS_ACCESS_KEY_ID`: Your AWS access key ID (tested using `AdministratorAccess` policy)
     * `AWS_SECRET_ACCESS_KEY`: Your AWS secret access key
