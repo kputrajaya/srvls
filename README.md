@@ -41,9 +41,9 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
 ## How to Use
 
 * Configure `PROJECT_NAME`, `HOST_NAME`, and `AWS_REGION` in `.drone.yml`
-* ([Install Drone](https://docs.drone.io/installation/github/single-machine/)) (tested using `v1.0.0`)
+* [Setup Drone](https://docs.drone.io/installation/github/single-machine/) (tested using `v1.0.0`)
 * Enable Drone for your repository
-* Check "Trusted" flag to enable ([volume mounting](https://docs.drone.io/user-guide/pipeline/volumes/))
+* Check "Trusted" flag to enable [volume mounting](https://docs.drone.io/user-guide/pipeline/volumes/)
 * Create folders `/drone/npm/` and `/drone/pip/` on host machine
 * Add necessary secrets:
     * `AWS_ACCESS_KEY_ID`: Your AWS access key ID (tested using `AdministratorAccess` policy)
@@ -51,4 +51,4 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
     * `MAILGUN_USER`: Your Mailgun SMTP username (optional)
     * `MAILGUN_PASSWORD`: Your Mailgun SMTP password (optional)
     * `CERTIFICATE_ARN`: Your ACM certificate's ARN for `cdn-PROJECT_NAME.HOST_NAME` (must be in `us-east-1`)
-* Start pushing to `master` branch
+* Push to `master` branch to trigger builds
