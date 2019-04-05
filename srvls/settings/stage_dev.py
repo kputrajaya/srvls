@@ -8,7 +8,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'zappa_django_utils.db.backends.s3sqlite',
         'NAME': 'db.sqlite3',
-        'BUCKET': 'srvls-db'
+        'BUCKET': AWS_STORAGE_BUCKET_NAME
     }
 }
 
