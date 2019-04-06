@@ -18,7 +18,7 @@ steps:
         from_secret: CERTIFICATE_ARN
 
       # Configurations
-      PROJECT_NAME: bar
+      PROJECT_NAME: ipsum
       HOST_NAME: kputrajaya.com
       AWS_REGION: ap-southeast-1
       DEPLOY_STAGE: dev
