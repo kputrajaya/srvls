@@ -55,7 +55,7 @@ custom:
   pythonRequirements:
     dockerizePip: non-linux
   wsgi:
-    app: ${env:PROJECT_NAME}.wsgi.application
+    app: srvls.wsgi.application
     packRequirements: false
 
 resources:
