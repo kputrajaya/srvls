@@ -20,7 +20,7 @@ class Ping(View):
 @method_decorator(csrf_exempt, name='dispatch')
 class Logs(View):
     def get(self, request):
-        logs = Log.objects.order_by('-pk')[0:100]
+        logs = Log.objects.order_by('-pk')[:100]
         data = [
             {
                 'message': x.message,
