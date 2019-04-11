@@ -40,6 +40,7 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
 
 ## How to Use
 
+* Replace `srvls.settings.base.SECRET_KEY` with a new key
 * Modify `PROJECT_NAME`, `HOST_NAME`, and `AWS_REGION` in `.drone.yml`
 * [Sign up](https://cloud.drone.io) for Drone or [setup locally](https://docs.drone.io/installation/github/single-machine/) (tested using `v1.0.0`)
 * Enable Drone for your repository
