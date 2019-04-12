@@ -17,6 +17,7 @@ ALLOWED_HOSTS = ('*',)
 INSTALLED_APPS = [
     'master',
 
+    'corsheaders',
     'debug_toolbar',
     'zappa_django_utils',
 
@@ -31,6 +32,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -140,6 +142,8 @@ AWS_S3_OBJECT_PARAMETERS = {'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT', 'CacheCo
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
 AWS_IS_GZIPPED = True
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Import local settings
