@@ -65,6 +65,13 @@ resources:
       Properties:
         AccessControl: PublicRead
         BucketName: ${env:BUCKET_NAME}
+        CorsConfiguration:
+          CorsRules:
+            - AllowedMethods:
+                - GET
+                - HEAD
+              AllowedOrigins:
+                - '*'
     CloudFrontDistribution:
       Type: AWS::CloudFront::Distribution
       Properties:
@@ -76,6 +83,8 @@ resources:
             ViewerProtocolPolicy: 'redirect-to-https'
             DefaultTTL: 2592000
             ForwardedValues:
+              Headers:
+                - Origin
               QueryString: false
           Enabled: true
           Origins:

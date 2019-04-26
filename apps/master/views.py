@@ -3,6 +3,7 @@ import logging
 
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse, JsonResponse
+from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
@@ -25,7 +26,7 @@ class Logs(View):
             {
                 'message': x.message,
                 'image': x.image.url if x.image else None,
-                'created_at': x.created_at
+                'created_at': timezone.localtime(x.created_at)
             }
             for x in logs
         ]
