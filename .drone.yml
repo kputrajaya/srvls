@@ -24,11 +24,6 @@ steps:
       DEPLOY_STAGE: dev
       SLS_DEBUG: '*'
     commands:
-      # Static variables
-      - export PATH=$HOME/opt/sqlite/bin:$PATH
-      - export LD_LIBRARY_PATH=$HOME/opt/sqlite/lib
-      - export LD_RUN_PATH=$HOME/opt/sqlite/lib
-
       # Dynamic variables
       - export BUCKET_NAME=$PROJECT_NAME-$DEPLOY_STAGE-app
       - export CDN_DOMAIN=$PROJECT_NAME-cdn.$HOST_NAME
