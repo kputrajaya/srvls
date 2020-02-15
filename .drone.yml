@@ -3,7 +3,7 @@ name: default
 
 steps:
   - name: publish
-    image: lambci/lambda:build-python3.7
+    image: lambci/lambda:build-python3.8
     environment:
       # Secrets
       AWS_ACCESS_KEY_ID:

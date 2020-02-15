@@ -2,7 +2,7 @@ service: ${env:PROJECT_NAME}
 
 provider:
   name: aws
-  runtime: python3.7
+  runtime: python3.8
   region: ${env:AWS_REGION}
   memorySize: 256
   timeout: 10
