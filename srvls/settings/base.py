@@ -61,8 +61,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'srvls.wsgi.application'
 
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-NOSE_ARGS = ('apps', '--nocapture', '--nologcapture')
 
 
 # Database

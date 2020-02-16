@@ -16,6 +16,7 @@ if __name__ == '__main__':
     testing = len(sys.argv) > 1 and sys.argv[1] == 'test'
     if testing:
         import coverage
+        sys.argv.insert(2, 'apps')
         cov = coverage.coverage()
         cov.erase()
         cov.start()
