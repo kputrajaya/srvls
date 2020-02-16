@@ -27,7 +27,6 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
 
 * [Django](https://www.djangoproject.com/)
 * [Django Debug Toolbar](https://github.com/jazzband/django-debug-toolbar)
-* [Django Nose](https://github.com/django-nose/django-nose)
 * [Django Storages](https://github.com/jschneier/django-storages)
 * [Coverage](https://github.com/nedbat/coveragepy)
 * [Mailgun](https://www.mailgun.com/)
