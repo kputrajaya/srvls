@@ -1,7 +1,5 @@
 # SRVLS
 
-[![Build](https://drone.kputrajaya.com/api/badges/kiloev/srvls/status.svg)](https://drone.kputrajaya.com/kiloev/srvls)
-
 Base for small Django projects running serverless.
 
 Built to shorten setup time, cut down server cost, and enforce good practices.
