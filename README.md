@@ -2,25 +2,6 @@
 
 Base for small Django projects running serverless.
 
-Built to shorten setup time, cut down server cost, and enforce good practices.
-
-## Features
-
-#### Develop:
-* Debugging
-
-#### Build:
-* Code linting
-* Unit testing with coverage
-* Stack and app deployment
-* Domain management
-
-#### Run:
-* Serverless database
-* Email delivery
-* Centralized assets behind CDN
-* Centralized logging
-
 ## Built With
 
 * [Django](https://www.djangoproject.com/)
@@ -35,7 +16,24 @@ Built to shorten setup time, cut down server cost, and enforce good practices.
 * [AWS Lambda](https://aws.amazon.com/lambda/)
 * [Drone](https://drone.io/)
 
-## How to Use
+## Features
+
+### Develop
+* Debugging
+
+### Build
+* Code linting
+* Unit testing with coverage
+* Stack and app deployment
+* Domain management
+
+### Run
+* Serverless database
+* Email delivery
+* Centralized assets behind CDN
+* Centralized logging
+
+## Installation
 
 * Replace `srvls.settings.base.SECRET_KEY` with a new key
 * Modify `PROJECT_NAME`, `HOST_NAME`, and `AWS_REGION` in `.drone.yml`
